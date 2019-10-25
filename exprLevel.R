@@ -22,7 +22,7 @@ exprLevel <- function(fl_nm){
 
 mc <- getOption("mc.cores", detectCores(logical = F)-2)
 res <- mclapply(bamSort_file, exprLevel, mc.preschedule = FALSE, mc.cleanup = FALSE, mc.cores = mc)
-stopCluster(mc)
+
 
 
 
