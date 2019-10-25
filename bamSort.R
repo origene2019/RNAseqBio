@@ -24,7 +24,6 @@ bam_sort <- function(sam_file){
 #多核并行
 mc <- getOption("mc.cores", detectCores(logical = F)-2)   #多核并行，设置核树
 res <- mclapply(bam_file, bam_sort, mc.preschedule = FALSE, mc.cleanup = FALSE, mc.cores = mc)
-stopCluster(mc)
 
 
 
