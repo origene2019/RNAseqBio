@@ -7,4 +7,4 @@
 
 
 ## exprLevel.R
-### 对排序后的bam进行表达水平分析
+### 对排序后的bam进行表达水平分析，featrue-count
