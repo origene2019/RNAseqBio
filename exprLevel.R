@@ -12,7 +12,6 @@ bamSort_file
 
 exprLevel <- function(fl_nm){
   sortbam_nm <- str_replace(fl_nm,'-sort.bam','')
-  
   input_file <- paste0(outfile_dir,fl_nm)
   output_file <- paste0(outfile_dir,sortbam_nm,'_count.txt')
   expr_cmd <- paste0(path,'htseq-count -f bam ', input_file, ' ', gtf_file, ' > ' , output_file)
