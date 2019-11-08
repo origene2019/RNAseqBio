@@ -6,12 +6,62 @@
 ### 使用samtools对bam文件按染色体位置进行排序
 #### 参考基因比对结果sam/bam文件格式说明[https://blog.csdn.net/xcaryyz/article/details/79257604]
 
-
+# 比对分析
 ## exprLevel.R
-### 对排序后的bam进行表达水平分析，featrue-count
+### 包含排序功能samtools sort，同上
+### 对排序后的bam进行表达水平分析，htseq-count （htseq 0.9.1）
 
 
 ## sampleCorr.R
 ### 样本间相关性分析，画相关矩阵图
+
+
+# 定量分析
+## FPKM.R
+stringtie 1.3.3b
+
+## fpkmDistribPlot.R
+### fpkm分布图（箱图和小提琴图）
+
+
+# 差异分析
+## DEGs.R
+DESeq2 1.26.0
+### 差异基因筛选 padj < 0.05 & abs(log2FoldChange) > 0，输出画火山图，样本基因表达量excel，样本差异基因表达量excel
+
+
+# 富集分析
+clusterProfiler 3.14.0
+### 根据差异基因进行富集分析
+
+# 可变剪接
+## alterSplic.R
+rMATS 4.0.2
+###--s1 s1.txt  txt输入文件，包含了Sample1的fastq序列文件
+###--s2 s2.txt  txt输入文件，包含了Sample2的fastq序列文件
+###--b1 b1.txt  txt输入文件，包含了Sample1的bam序列文件
+###--b2 b2.txt  txt输入文件，包含了Sample2的bam序列文件
+###--t  readType RNASeq数据类型，'paired'表示双端数据，'single'表示单端数据，这里采用<paired双端数据>
+###--readLength <int> 测序read长度，<150>
+###--gtf gtfFile gtf注释文件
+###--nthread 线程数 5
+###--od  outDir  输出路径
+
+
+# 变异分析
+GATK
+snpEff
+## SNP-loop.R
+# (6.1) 标记比对文件中的pcr重复
+# (6.2) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
+# (6.3) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
+# (6.4) 检测snp和indel
+# (6.5)snp和indel过滤
+
+## SNPann.R
+### 变异基因注释
+
+
+
 
 
