@@ -36,7 +36,7 @@ stringtie 1.3.3b
 ## DEGs.R
 DESeq2 1.26.0
 #### 差异基因筛选 padj < 0.05 & abs(log2FoldChange) > 0
-#### 输出画火山图
+#### 输出火山图
 #### 样本组基因表达量列表 _diffGenles.xlsx
 #### 样本组差异基因表达量列表 _counts.xlsx
 
@@ -46,7 +46,7 @@ DESeq2 1.26.0
 # 4、富集分析
 clusterProfiler 3.14.0
 ### 根据差异基因进行富集分析
-#### org.Hu.eg.db 老鼠基因u库
+#### org.Hu.eg.db 老鼠基因库
 #### org.Mm.eg.db 人类基因库
 #### GO、KEGG、GASE、DO、Reactome
 
