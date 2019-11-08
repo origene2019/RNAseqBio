@@ -19,9 +19,9 @@
 # 2、定量分析
 ## FPKM.R
 stringtie 1.3.3b
-### -A 输出基因丰度值（FPKM, TPM）
-### -l 新组装的转录本标签（默认STRG）
-### -o 输出新组装的gtf文件
+#### -A 输出基因丰度值（FPKM, TPM）
+#### -l 新组装的转录本标签（默认STRG）
+#### -o 输出新组装的gtf文件
 
 ## fpkmDistribPlot.R
 ### fpkm分布图（箱图和小提琴图）
@@ -56,11 +56,11 @@ rMATS 4.0.2
 GATK
 snpEff
 ## SNP-loop.R
-### (6.1) 标记比对文件中的pcr重复
-### (6.2) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
-### (6.3) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
-### (6.4) 检测snp和indel
-### (6.5)snp和indel过滤
+#### (6.1) 标记比对文件中的pcr重复
+#### (6.2) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
+#### (6.3) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
+#### (6.4) 检测snp和indel
+#### (6.5)snp和indel过滤
 
 ## SNPann.R
 ### 变异基因注释
