@@ -1,6 +1,7 @@
 # TranscripBio
 转录组分析
-
+grpTab：样本分组明细表
+grpTyp：Treatment和Control分组关系表
 
 ## bamSort.R
 ### 使用samtools对bam文件按染色体位置进行排序
