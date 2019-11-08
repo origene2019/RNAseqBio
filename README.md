@@ -5,12 +5,14 @@ grpTyp：Treatment和Control分组关系表
 
 ## bamSort.R
 ### 使用samtools对bam文件按染色体位置进行排序
+### 输出文件以'-sort.bam'后缀
 #### 参考基因比对结果sam/bam文件格式说明[https://blog.csdn.net/xcaryyz/article/details/79257604]
 
 # 1、比对分析
 ## 1.1、exprLevel.R
 ### 包含排序功能samtools sort，同上
 ### 对排序后的bam进行表达水平分析，htseq-count （htseq 0.9.1）
+### _count.txt
 
 
 ## 1.2、sampleCorr.R
@@ -31,7 +33,10 @@ stringtie 1.3.3b
 # 3、差异分析
 ## DEGs.R
 DESeq2 1.26.0
-### 差异基因筛选 padj < 0.05 & abs(log2FoldChange) > 0，输出画火山图，样本基因表达量excel，样本差异基因表达量excel
+### 差异基因筛选 padj < 0.05 & abs(log2FoldChange) > 0
+### 输出画火山图
+### 样本基因表达量 _diffGenes.xlsx
+### 样本差异基因表达量 _counts.xlsx
 
 
 # 4、富集分析
