@@ -6,7 +6,7 @@
 ### 使用samtools对bam文件按染色体位置进行排序
 #### 参考基因比对结果sam/bam文件格式说明[https://blog.csdn.net/xcaryyz/article/details/79257604]
 
-# 比对分析
+# 1、比对分析
 ## exprLevel.R
 ### 包含排序功能samtools sort，同上
 ### 对排序后的bam进行表达水平分析，htseq-count （htseq 0.9.1）
@@ -16,25 +16,29 @@
 ### 样本间相关性分析，画相关矩阵图
 
 
-# 定量分析
+# 2、定量分析
 ## FPKM.R
 stringtie 1.3.3b
+### -A 输出基因丰度值（FPKM, TPM）
+### -l 新组装的转录本标签（默认STRG）
+### -o 输出新组装的gtf文件
 
 ## fpkmDistribPlot.R
 ### fpkm分布图（箱图和小提琴图）
 
 
-# 差异分析
+# 3、差异分析
 ## DEGs.R
 DESeq2 1.26.0
 ### 差异基因筛选 padj < 0.05 & abs(log2FoldChange) > 0，输出画火山图，样本基因表达量excel，样本差异基因表达量excel
 
 
-# 富集分析
+# 4、富集分析
 clusterProfiler 3.14.0
 ### 根据差异基因进行富集分析
 
-# 可变剪接
+
+# 5、可变剪接
 ## alterSplic.R
 rMATS 4.0.2
 ###--s1 s1.txt  txt输入文件，包含了Sample1的fastq序列文件
@@ -48,7 +52,7 @@ rMATS 4.0.2
 ###--od  outDir  输出路径
 
 
-# 变异分析
+# 6、变异分析
 GATK
 snpEff
 ## SNP-loop.R
