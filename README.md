@@ -7,23 +7,23 @@
 #### 参考基因比对结果sam/bam文件格式说明[https://blog.csdn.net/xcaryyz/article/details/79257604]
 
 # 1、比对分析
-## exprLevel.R
+## 1.1、exprLevel.R
 ### 包含排序功能samtools sort，同上
 ### 对排序后的bam进行表达水平分析，htseq-count （htseq 0.9.1）
 
 
-## sampleCorr.R
+## 1.2、sampleCorr.R
 ### 样本间相关性分析，画相关矩阵图
 
 
 # 2、定量分析
-## FPKM.R
+## 2.1、FPKM.R
 stringtie 1.3.3b
 #### -A 输出基因丰度值（FPKM, TPM）
 #### -l 新组装的转录本标签（默认STRG）
 #### -o 输出新组装的gtf文件
 
-## fpkmDistribPlot.R
+## 2.2、fpkmDistribPlot.R
 ### fpkm分布图（箱图和小提琴图）
 
 
@@ -55,14 +55,14 @@ rMATS 4.0.2
 # 6、变异分析
 GATK
 snpEff
-## SNP-loop.R
+## 6.1、SNP-loop.R
 #### (6.1) 标记比对文件中的pcr重复
 #### (6.2) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
 #### (6.3) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
 #### (6.4) 检测snp和indel
 #### (6.5)snp和indel过滤
 
-## SNPann.R
+## 6.2、SNPann.R
 ### 变异基因注释
 
 
