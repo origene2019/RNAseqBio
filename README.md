@@ -13,7 +13,7 @@ R包：pbmcapply或parallel，多核并行运算
 ## 1.1、exprLevel.R
 #### 包含排序功能samtools sort，同上
 #### 对排序后的bam进行表达水平分析，htseq-count （htseq 0.9.1）
-#### 表达量 _count.txt
+#### 表达量列表 _count.txt
 
 
 # 2、FPKM定量
@@ -37,8 +37,8 @@ stringtie 1.3.3b
 DESeq2 1.26.0
 #### 差异基因筛选 padj < 0.05 & abs(log2FoldChange) > 0
 #### 输出画火山图
-#### 样本基因表达量列表 _diffGenles.xlsx
-#### 样本差异基因表达量列表 _counts.xlsx
+#### 样本组基因表达量列表 _diffGenles.xlsx
+#### 样本组差异基因表达量列表 _counts.xlsx
 
 ### 韦恩图（待完善）
 ### 差异基因聚类，聚类热图（待完善）
