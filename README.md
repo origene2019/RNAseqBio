@@ -12,7 +12,7 @@ grpTyp：Treatment和Control分组关系表
 ## 1.1、exprLevel.R
 ### 包含排序功能samtools sort，同上
 ### 对排序后的bam进行表达水平分析，htseq-count （htseq 0.9.1）
-### _count.txt
+### 表达量 _count.txt
 
 
 ## 1.2、sampleCorr.R
