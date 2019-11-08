@@ -41,26 +41,26 @@ clusterProfiler 3.14.0
 # 5、可变剪接
 ## alterSplic.R
 rMATS 4.0.2
-###--s1 s1.txt  txt输入文件，包含了Sample1的fastq序列文件
-###--s2 s2.txt  txt输入文件，包含了Sample2的fastq序列文件
-###--b1 b1.txt  txt输入文件，包含了Sample1的bam序列文件
-###--b2 b2.txt  txt输入文件，包含了Sample2的bam序列文件
-###--t  readType RNASeq数据类型，'paired'表示双端数据，'single'表示单端数据，这里采用<paired双端数据>
-###--readLength <int> 测序read长度，<150>
-###--gtf gtfFile gtf注释文件
-###--nthread 线程数 5
-###--od  outDir  输出路径
+#### --s1 s1.txt  txt输入文件，包含了Sample1的fastq序列文件
+#### --s2 s2.txt  txt输入文件，包含了Sample2的fastq序列文件
+#### --b1 b1.txt  txt输入文件，包含了Sample1的bam序列文件
+#### --b2 b2.txt  txt输入文件，包含了Sample2的bam序列文件
+#### --t  readType RNASeq数据类型，'paired'表示双端数据，'single'表示单端数据，这里采用<paired双端数据>
+#### --readLength <int> 测序read长度，<150>
+#### --gtf gtfFile gtf注释文件
+#### --nthread 线程数 5
+#### --od  outDir  输出路径
 
 
 # 6、变异分析
 GATK
 snpEff
 ## SNP-loop.R
-# (6.1) 标记比对文件中的pcr重复
-# (6.2) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
-# (6.3) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
-# (6.4) 检测snp和indel
-# (6.5)snp和indel过滤
+### (6.1) 标记比对文件中的pcr重复
+### (6.2) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
+### (6.3) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
+### (6.4) 检测snp和indel
+### (6.5)snp和indel过滤
 
 ## SNPann.R
 ### 变异基因注释
