@@ -9,3 +9,9 @@
 
 ## exprLevel.R
 ### 对排序后的bam进行表达水平分析，featrue-count
+
+
+## sampleCorr.R
+### 样本间相关性分析，画相关矩阵图
+
+
