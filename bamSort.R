@@ -1,4 +1,4 @@
-library(parallel)
+
 
 path <- '/home/origene/zhengguosong/anaconda3/envs/rna/bin/'  #虚拟环境，samtools等软件的安装环境
 source_dir <- '/home/data/Rseq/wangyangxian/'     #存储bam数据文件路径
@@ -22,6 +22,7 @@ bam_sort <- function(sam_file){
 }
 
 #多核并行
+library(parallel)
 mc <- getOption("mc.cores", detectCores(logical = F)-2)   #多核并行，设置核树
 res <- mclapply(bam_file, bam_sort, mc.preschedule = FALSE, mc.cleanup = FALSE, mc.cores = mc)
 
