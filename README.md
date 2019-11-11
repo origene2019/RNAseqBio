@@ -119,7 +119,8 @@ stringtie 1.3.3b
 ## 2.3、fpkmDistribPlot.R
 #### fpkm分布图（箱图和小提琴图）
 
-#### 主成分分析（待完善）
+## 2.4、pcaPlot.R
+#### 主成分分析
 
 
 # 3、差异分析
@@ -130,8 +131,10 @@ DESeq2 1.26.0
 #### 样本组基因表达量列表 _diffGenles.xlsx
 #### 样本组差异基因表达量列表 _counts.xlsx
 
-### 韦恩图（待完善）
-### 差异基因聚类，聚类热图（待完善）
+VennPlot.R
+### 韦恩图
+heatmapCluster.R
+### 差异基因聚类，聚类热图
 
 # 4、富集分析
 clusterProfiler 3.14.0
