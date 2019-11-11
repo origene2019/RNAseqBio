@@ -106,6 +106,8 @@ Linux命令：whereis查找生信软件执行路径，for example: whereis samto
 #### 对排序后的bam进行表达水平分析，htseq-count （htseq 0.9.1）
 #### 表达量列表 _count.txt
 
+## 1.2、sampleCorr.R
+#### 样本间相关性分析，画相关矩阵图
 
 # 2、FPKM定量
 ## 2.1、FPKM.R
@@ -113,9 +115,6 @@ stringtie 1.3.3b
 ##### -A 输出基因丰度值（FPKM, TPM）
 ##### -l 新组装的转录本标签（默认STRG）
 ##### -o 输出新组装的gtf文件
-
-## 2.2、sampleCorr.R
-#### 样本间相关性分析，画相关矩阵图
 
 ## 2.3、fpkmDistribPlot.R
 #### fpkm分布图（箱图和小提琴图）
