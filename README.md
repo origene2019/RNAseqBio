@@ -24,6 +24,7 @@ grpVenn：Venn图分组表
 
 
 R包：pbmcapply或parallel，多核并行运算
+Linux命令：whereis查找生信软件执行路径，for example: whereis samtools 返回samtools得执行路径
 
 ## File Tree
 
