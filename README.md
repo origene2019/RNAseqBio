@@ -15,6 +15,13 @@ FAA1eye	FAAEYE
 FAA1LI	FAALI  
 FAA1LN	FAALN  
 
+grpVenn：Venn图分组表
+
+	          组合n	组合n	组合n 组合n	组合n  
+组合比较Venn 1	组合1	组合2	组合3	组合4	  
+组合比较Venn 2	组合8	组合	组合10   
+
+
 
 R包：pbmcapply或parallel，多核并行运算
 
