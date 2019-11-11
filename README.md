@@ -95,8 +95,8 @@ R包：pbmcapply或parallel，多核并行运算
 
 
 ## bamSort.R
-#### 使用samtools对bam文件按染色体位置进行排序
-#### 输出文件以'-sort.bam'后缀
+#### 使用samtools对bam文件按染色体位置进行排序，未加-n参数
+#### 输出文件以'_sort.bam'后缀
 ##### 参考基因比对结果sam/bam文件格式说明[https://blog.csdn.net/xcaryyz/article/details/79257604]
 
 # 1、定量分析
