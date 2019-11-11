@@ -8,6 +8,14 @@ grpTab：样本分组明细表
 组合3	MDHABR	FDHABR  
 
 grpTyp：Treatment和Control分组关系表  
+
+x	z  
+FAA1BR	FAABR  
+FAA1eye	FAAEYE  
+FAA1LI	FAALI  
+FAA1LN	FAALN  
+
+
 R包：pbmcapply或parallel，多核并行运算
 
 ## File Tree
