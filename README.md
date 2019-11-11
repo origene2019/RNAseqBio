@@ -4,6 +4,75 @@ grpTab：样本分组明细表
 grpTyp：Treatment和Control分组关系表  
 R包：pbmcapply或parallel，多核并行运算
 
+## File Tree
+
+.
+├── 0.SupFile
+├── 1.QC
+│   ├── 1.Error
+│   ├── 2.GC
+│   ├── 3.Filter
+│   └── 4.Stat
+├── 2.Mapping
+│   ├── 1.Region
+│   └── 2.Stat
+├── 3.AS
+│   ├── ASlist
+│   │   ├── AS_FDHABR_vs_FAABR
+│   │   ├── AS_FDHAEYE_vs_FAAEYE
+│   │   ├── AS_FDHALI_vs_FAALI
+│   │   └── AS_FDHALN_vs_FAALN
+│   └── ASplot
+│       ├── FAABR_FDHABR
+│       ├── FDHAEYE_vs_FAAEYE
+│       ├── FDHALI_vs_FAALI
+│       └── FDHALN_vs_FAALN
+├── 4.SNP
+│   ├── SNP_annotation
+│   ├── SNP_site
+│   └── SNP_stat
+├── 5.Quant
+│   ├── Fig.orrelation.analysis
+│   ├── Fig.PCA.analysis
+│   ├── Fig.violin
+│   ├── FPKM
+│   └── Read_count
+├── 6.Differential
+│   ├── Fig.cluster
+│   ├── Fig.venn
+│   ├── Fig.volcano
+│   └── Venn.DEG
+│       ├── venn1
+│       ├── venn2
+│       ├── venn3
+│       ├── venn4
+│       └── venn5
+├── 7.Enrichment
+│   ├── FDHABR_vs_FAABR
+│   │   ├── GO
+│   │   └── KEGG
+│   ├── FDHABR_vs_FAABR_down
+│   │   ├── GO
+│   │   └── KEGG
+│   ├── FDHABR_vs_FAABR_up
+│   │   ├── GO
+│   │   └── KEGG
+│   └── FDHAEYE_vs_FAAEYE
+│       ├── GO
+│       └── KEGG
+└── 8.PPI
+    ├── FDHABR_vs_FAABR
+    ├── FDHAEYE_vs_FAAEYE
+    ├── FDHALI_vs_FAALI
+    └── FDHALN_vs_FAALN
+
+
+
+
+
+
+
+
 ## bamSort.R
 #### 使用samtools对bam文件按染色体位置进行排序
 #### 输出文件以'-sort.bam'后缀
