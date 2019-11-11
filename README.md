@@ -119,10 +119,6 @@ stringtie 1.3.3b
 ## 2.3、fpkmDistribPlot.R
 #### fpkm分布图（箱图和小提琴图）
 
-## 2.4、pcaPlot.R
-#### 主成分分析
-
-
 # 3、差异分析
 ## DEGs.R
 DESeq2 1.26.0
@@ -130,6 +126,9 @@ DESeq2 1.26.0
 #### 输出火山图
 #### 样本组基因表达量列表 _diffGenles.xlsx
 #### 样本组差异基因表达量列表 _counts.xlsx
+
+## 2.4、pcaPlot.R
+#### 主成分分析
 
 VennPlot.R
 ### 韦恩图
