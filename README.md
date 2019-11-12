@@ -77,8 +77,13 @@ Linux命令：whereis查找生信软件执行路径，for example: whereis samto
 
 
 
-
-
+#### 需要使用的生信软件，使用conda进行安装及管理 conda install，conda update, conda uninstall
+#### 建议创建单独的虚拟运行环境 conda create -n rna, conda activate rna, conda deactivate rna
+Anaconda官网<https://www.anaconda.com/>
+conda manager 查找软件安装<https://anaconda.org/continuumcrew/conda-manager>
+Linux命令：
+top 查看当前运行的进程信息
+whereis 查找软件路径
 
 
 ## bamSort.R
@@ -155,7 +160,7 @@ GATK
 snpEff
 ## 6.1、SNP-loop.R
 ### 变异位点SNP与INDEL检测
-##### (6.1) 标记比对文件中的pcr重复
+##### (6.1) 标记比对文件中的pcr重复，输入bam文件按染色体位置pos排序
 ##### (6.2) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
 ##### (6.3) 将落在内含子区间的 reads 片段直接切除，并对 MAPQ 进行调整
 ##### (6.4) 检测snp和indel
