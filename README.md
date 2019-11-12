@@ -103,7 +103,7 @@ Linux命令：whereis查找生信软件执行路径，for example: whereis samto
 # 1、定量分析
 ## 1.1、exprLevel.R
 #### 包含排序功能samtools sort，同上
-#### 对排序后的bam进行表达水平分析，htseq-count （htseq 0.9.1）
+#### 对排序后的bam进行表达水平分析，htseq-count （htseq 0.9.1），这里是按read name排序，不会出现warning
 #### 表达量列表 _count.txt
 
 ## 1.2、sampleCorr.R
@@ -112,7 +112,7 @@ Linux命令：whereis查找生信软件执行路径，for example: whereis samto
 # 2、FPKM定量
 ## 2.1、FPKM.R
 stringtie 1.3.3b
-##### -A 输出基因丰度值（FPKM, TPM）
+##### -A 输出基因丰度值（FPKM, TPM），这里输入的是按染色体位置进行排序的bam，stringtie只认按Pos排序
 ##### -l 新组装的转录本标签（默认STRG）
 ##### -o 输出新组装的gtf文件
 
