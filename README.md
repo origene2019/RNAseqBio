@@ -2,18 +2,20 @@
 
 grpTab：Treatment和Control分组关系表  
 
-差异比较分析	处理	参考  
-组合1	MDHABR	MAABR  
-组合2	FDHABR	FAABR  
-组合3	MDHABR	FDHABR  
+差异比较分析 | 处理 | 参考  
+-------- | ----- | -----
+组合1 | MDHABR | MAABR  
+组合2 | FDHABR | FAABR  
+组合3 | MDHABR | FDHABR  
 
 grpTyp：样本分组明细表  
 
-x	z  
-FAA1BR	FAABR  
-FAA1eye	FAAEYE  
-FAA1LI	FAALI  
-FAA1LN	FAALN  
+x | z  
+----- | -----
+FAA1BR | FAABR  
+FAA1eye | FAAEYE  
+FAA1LI | FAALI  
+FAA1LN | FAALN  
 
 grpVenn：Venn图分组表
 
