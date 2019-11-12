@@ -26,8 +26,8 @@ grpVenn：Venn图分组表
 
 
 
-R包：pbmcapply或parallel，多核并行运算
-Linux命令：whereis查找生信软件执行路径，for example: whereis samtools 返回samtools得执行路径
+R包：pbmcapply或parallel，多核并行运算  
+Linux命令：whereis查找生信软件执行路径，for example: whereis samtools 返回samtools得执行路径  
 
 ## File Tree
 
@@ -80,13 +80,13 @@ Linux命令：whereis查找生信软件执行路径，for example: whereis samto
 
 
 
-#### 需要使用的生信软件，使用conda进行安装及管理 conda install，conda update, conda uninstall
-#### 建议创建单独的虚拟运行环境 conda create -n rna, conda activate rna, conda deactivate rna
-Anaconda官网<https://www.anaconda.com/>
-conda manager 查找软件安装<https://anaconda.org/continuumcrew/conda-manager>
-Linux命令：
-top 查看当前运行的进程信息
-whereis 查找软件路径
+#### 需要使用的生信软件，使用conda进行安装及管理 conda install，conda update, conda uninstall  
+#### 建议创建单独的虚拟运行环境 conda create -n rna, conda activate rna, conda deactivate rna  
+Anaconda官网<https://www.anaconda.com/>  
+conda manager 查找软件安装<https://anaconda.org/continuumcrew/conda-manager>  
+Linux命令：  
+top 查看当前运行的进程信息   
+whereis 查找软件路径   
 
 
 ## bamSort.R
