@@ -41,13 +41,9 @@ Linux命令：whereis查找生信软件执行路径，for example: whereis samto
 ├── 3.AS  
 │   ├── ASlist  
 │   │   ├── AS_FDHABR_vs_FAABR  
-│   │   ├── AS_FDHAEYE_vs_FAAEYE  
-│   │   ├── AS_FDHALI_vs_FAALI  
 │   │   └── AS_FDHALN_vs_FAALN  
 │   └── ASplot  
 │       ├── FAABR_FDHABR  
-│       ├── FDHAEYE_vs_FAAEYE  
-│       ├── FDHALI_vs_FAALI  
 │       └── FDHALN_vs_FAALN  
 ├── 4.SNP  
 │   ├── SNP_annotation  
@@ -66,26 +62,16 @@ Linux命令：whereis查找生信软件执行路径，for example: whereis samto
 │   └── Venn.DEG  
 │       ├── venn1  
 │       ├── venn2  
-│       ├── venn3  
-│       ├── venn4  
-│       └── venn5  
+│       └── venn3  
 ├── 7.Enrichment  
 │   ├── FDHABR_vs_FAABR  
 │   │   ├── GO  
-│   │   └── KEGG  
-│   ├── FDHABR_vs_FAABR_down  
-│   │   ├── GO  
-│   │   └── KEGG  
-│   ├── FDHABR_vs_FAABR_up  
-│   │   ├── GO  
-│   │   └── KEGG  
+│   │   └── KEGG   
 │   └── FDHAEYE_vs_FAAEYE  
 │       ├── GO  
 │       └── KEGG  
 └── 8.PPI  
-    ├── FDHABR_vs_FAABR  
-    ├── FDHAEYE_vs_FAAEYE  
-    ├── FDHALI_vs_FAALI  
+    ├── FDHABR_vs_FAABR   
     └── FDHALN_vs_FAALN  
 
 
