@@ -95,7 +95,22 @@ Linux命令：whereis查找生信软件执行路径，for example: whereis samto
 ## 1.2、sampleCorr.R
 #### 样本间相关性分析，画相关矩阵图
 
-# 2、FPKM定量
+
+# 2、差异分析 Read Counts
+## DEGs.R
+DESeq2 1.26.0
+#### 差异基因筛选 padj < 0.05 & abs(log2FoldChange) > 0
+#### 合并read counts
+#### 输出火山图
+#### 实验组基因表达量列表 _diffGenles.xlsx
+#### 实验组差异基因表达量列表 _counts.xlsx
+
+VennPlot.R
+### 韦恩图，差异基因diff count值
+
+
+
+# 3、FPKM定量
 ## 2.1、FPKM.R
 stringtie 1.3.3b
 ##### -A 输出基因丰度值（FPKM, TPM），这里输入的是按染色体位置进行排序的bam，stringtie只认按Pos排序
@@ -110,20 +125,7 @@ stringtie 1.3.3b
 #### 主成分分析 fpkm值
 
 heatmapCluster.R 
-### 差异基因聚类，聚类热图 fpkm值
-
-
-# 3、差异分析 Read Counts
-## DEGs.R
-DESeq2 1.26.0
-#### 差异基因筛选 padj < 0.05 & abs(log2FoldChange) > 0
-#### 合并read counts
-#### 输出火山图
-#### 实验组基因表达量列表 _diffGenles.xlsx
-#### 实验组差异基因表达量列表 _counts.xlsx
-
-VennPlot.R
-### 韦恩图 diff counts
+### 差异基因聚类，聚类热图，差异基因fpkm值
 
 
 # 4、富集分析
