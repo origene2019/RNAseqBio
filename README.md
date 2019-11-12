@@ -106,7 +106,7 @@ stringtie 1.3.3b
 #### 合并fpkm
 #### fpkm分布图（箱图和小提琴图）
 
-# 3、差异分析
+# 3、差异分析 Read Counts
 ## DEGs.R
 DESeq2 1.26.0
 #### 差异基因筛选 padj < 0.05 & abs(log2FoldChange) > 0
