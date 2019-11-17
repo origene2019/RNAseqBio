@@ -94,6 +94,10 @@ whereis 查找软件路径
 #### 输出文件以'_sort.bam'后缀
 ##### 参考基因比对结果sam/bam文件格式说明[https://blog.csdn.net/xcaryyz/article/details/79257604]
 
+# 序列比对（待完善）
+# 数据质控（待完善）
+
+
 # 1、定量分析
 ## 1.1、exprLevel.R
 #### 包含排序功能samtools sort，同上
