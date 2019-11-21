@@ -101,6 +101,7 @@ for (n in grpTab$grp_no) {
   p <- p + theme_light()
   qplot <- p + theme(axis.text.x = element_text(hjust = 1, angle = xsize), panel.grid.major =element_blank(), panel.grid.minor = element_blank(),plot.title = element_text(hjust = 0.5))
   ggsave(paste0(outplot_dir, '/', plt_nm , '_FPKM.png'), plot = qplot, limitsize = FALSE, width = 8, height = 8)
+  ggsave(paste0(outplot_dir, '/', plt_nm , '_FPKM.pdf'), plot = qplot, limitsize = FALSE, width = 8, height = 8)
   print(n)
 }
 
