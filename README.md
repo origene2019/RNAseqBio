@@ -162,17 +162,17 @@ rMATS 4.0.2
 ##### --od  outDir  输出路径
  
 ## 5.3 可变剪切可视化
-#	rmats2sashimiplot（pyhton2环境）需要调用samtools,使用时特别需要注意把python2环境下的samtools升级到最新版本，否则在调用samtools时会调用失败，  
-#	原因是自动安装的版本太低，服务器没有它需要的libxxx.so.0.0.0库。  
-#	升级python2中samtools的方法：  
+####	rmats2sashimiplot（pyhton2环境）需要调用samtools,使用时特别需要注意把python2环境下的samtools升级到最新版本，否则在调用samtools时会调用失败，  
+####	原因是自动安装的版本太低，服务器没有它需要的libxxx.so.0.0.0库。  
+####	升级python2中samtools的方法：  
 conda activate python2  
 conda update samtools  
 conda install -c bioconda samtools openssl=1.0  
 
-#	rmats2sashimiplot输出的文件为pdf格式，可以用ImageMagick将pdf格式转换为png格式的图片
-#	安装好imageMagick后，运行以下代码
+####	rmats2sashimiplot输出的文件为pdf格式，可以用ImageMagick将pdf格式转换为png格式的图片
+####	安装好imageMagick后，运行以下代码
 convert -density 400 image.pdf imag.png
-#	-density 调整图片分辨率
+####	-density 调整图片分辨率
 
 # 6、变异分析
 GATK
