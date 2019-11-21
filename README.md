@@ -94,7 +94,11 @@ whereis 查找软件路径
 #### 输出文件以'_sort.bam'后缀
 ##### 参考基因比对结果sam/bam文件格式说明[https://blog.csdn.net/xcaryyz/article/details/79257604]
 
-# 序列比对（待完善）
+# 序列比对（RseqMap.R）
+## 比对结果统计汇总 mapStat.R
+## 比对区域统计汇总 mapRegStat.R
+
+
 # 数据质控（待完善）
 
 
@@ -104,11 +108,10 @@ whereis 查找软件路径
 #### 对排序后的bam进行表达水平分析，htseq-count （htseq 0.9.1），这里是按read name排序，不会出现warning
 #### 表达量列表 _count.txt
 
-## 1.2、sampleCorr.R
+# 2、差异分析 Read Counts
+## sampleCorr.R（含读取count值） 或corrPlot.R（已读取count值）
 #### 样本间相关性分析，画相关矩阵图
 
-
-# 2、差异分析 Read Counts
 ## DEGs.R
 DESeq2 1.26.0
 #### 差异基因筛选 padj < 0.05 & abs(log2FoldChange) > 0
@@ -190,7 +193,7 @@ snpEff
 ## 6.2、SNPann.R
 #### 变异基因注释
 
-
+## SNP结果汇总 SNPstatPlot.R
 
 
 
