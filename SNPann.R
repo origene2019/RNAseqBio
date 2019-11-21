@@ -1,23 +1,38 @@
+
+file_path <- '/home/data/Rseq/results361111/resultsAll/SNP'
+f_nm <- dir(file_path,pattern = '_filter_pass.vcf.gz$')
+nm <- str_replace(f_nm,'_filter_pass.vcf.gz','')
+path <- '/home/origene/lukunpeng/miniconda3/bin'
+
+if(!require(parallel)) install.packages("parallel")
 library(parallel)
 
-file_path <- '/home/data/Rseq/wangyangxian/SNP/vcf'
-f_nm <- dir(file_path,pattern = '_filter_pass.vcf')
-nm <- str_replace(f_nm,'_filter_pass.vcf','')
-path <- '/home/origene/lukunpeng/miniconda3/bin/snpEff'
-
 SNPann <- function(nma){
-  SNPann_cmd <- paste0(path, " -s ", file_path, '/', nma, ".html GRCm38.86 ", file_path, "/", nma, "_filter_pass.vcf > ", file_path, '/', nma, "_filter_pass_ann.vcf")
-  SNPann <- system(SNPann_cmd, intern = TRUE)
+  SNPann_cmd <- paste0(path, "/snpEff -s ", file_path, '/', nma, ".html GRCm38.86 ", file_path, "/", nma, "_filter_pass.vcf > ", file_path, '/', nma, "_filter_pass_ann.vcf")
+  SNPann <- system(SNPann_cmd,  intern = FALSE, wait = FALSE)
 }
 
-for (i in 1:floor(length(nm)/8)) {
-  nma <- nm[(8*i-7):(8*i)]
-  mc <- getOption("mc.cores", detectCores(logical = F))-2
-  res <- mclapply(nma, SNPann, mc.preschedule = FALSE, mc.set.seed = TRUE, mc.cleanup = FALSE, mc.cores = mc)
+k <- 1 #起始任务值
+res_no <- length(nm) #总任务数
+n <- round(detectCores(logical = F)/24*6,0) #同时执行进程数
+
+repeat { 
+  ps_lst <- system('ps x | grep filter_pass.vcf.gz', intern = TRUE) #注意这里检索所有的rmats的任务
+  thead_n <- length(ps_lst)-1
+  addn <- n - thead_n
+  if(addn>0){
+    res <- SNPann(nm[k])
+    print(k)
+    k <- k+1
+    Sys.sleep(sample(25:80,size=1))
+  }else{
+    Sys.sleep(300)
+  }
+  
+  if(k>res_no) {
+    break
+  }
 }
-
-
-
 
 
 

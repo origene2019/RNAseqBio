@@ -1,26 +1,27 @@
-#BiocManager::install('DESeq2')
+
+if(!require(openxlsx)) install.packages("openxlsx")
+if(!require(stringr)) install.packages("stringr")
+if(!require(dplyr)) install.packages("dplyr")
 library(openxlsx)
 library(stringr)
 library(dplyr)
 
 options(stringsAsFactors=FALSE)
-path <- "/home/data/Rseq/P101SC1717020113/DEG"
-setwd(path)
 # 分组情况表
-grpTab <- read.delim('/home/data/Rseq/P101SC1717020113/DEG/grpTab.txt', stringsAsFactors = FALSE)
+grpTab <- read.delim('/home/data/Rseq/results361111/resultsAll/grpTab.txt', stringsAsFactors = FALSE)
 #中文字段名：差异比较分析	处理	参考
 colnames(grpTab) <- c('grp_no', 'treatment', 'control')
-grpTyp <- read.delim('/home/data/Rseq/P101SC1717020113/DEG/grpTyp.txt', stringsAsFactors = FALSE)
+grpTyp <- read.delim('/home/data/Rseq/results361111/resultsAll/grpTyp.txt', stringsAsFactors = FALSE)
 
 
 #1.载入基因表达量文件，添加列名
-counts_dir <- '/home/data/Rseq/P101SC1717020113/'
-outcnt_files <- sort(dir(counts_dir, pattern = '_count.txt'))
-outcnt_flnms <- str_replace(outcnt_files,'_count.txt','')
+counts_dir <- '/home/data/Rseq/results361111/resultsAll/counts'
+outcnt_files <- sort(dir(counts_dir, pattern = '_counts.txt'))
+outcnt_flnms <- str_replace(outcnt_files,'_counts.txt','')
 
 countdat_lst <- list()
 for (nm in outcnt_flnms) {
-  count_data <- read.delim(paste0(counts_dir, nm, '_count.txt'), header=FALSE, stringsAsFactors = FALSE)
+  count_data <- read.delim(paste0(counts_dir, '/', nm, '_counts.txt'), header=FALSE, stringsAsFactors = FALSE)
   countdat_lst[[nm]] <- count_data
 }
 
@@ -58,16 +59,24 @@ for (i in 1:nrow(grpTab)) {
 }
 
 
-
-
-library(tidyverse)
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+library(BiocManager)
+if(!require(DESeq2)) BiocManager::install('DESeq2')
+if(!require(biomaRt)) BiocManager::install('biomaRt')
 library(DESeq2)
+library(biomaRt)
+#library(curl)
+if(!require(ggplot2)) install.packages("ggplot2")
+if(!require(ggrepel)) install.packages("ggrepel")
 library(ggplot2)
 library(ggrepel)
-library(biomaRt)
-library(curl)
 
-for(gp in grpTab$grp_no){
+
+outplot_dir <- "/home/data/Rseq/results361111/resultsAll/Differential/volcano"
+diffcounts_dir <- "/home/data/Rseq/results361111/resultsAll/Differential"
+outcounts_dir <- diffcounts_dir
+
+volcanoPlot <- function(gp){
   gp_nm <- paste0(grpTab[which(grpTab$grp_no==gp),2] , '_vs_' , grpTab[which(grpTab$grp_no==gp),3])
   mycounts <- grpMerge_lst[[gp]]
   #这里有个x，需要去除，先把第一列当作行名来处理
@@ -76,18 +85,18 @@ for(gp in grpTab$grp_no){
   mycounts<-mycounts[,-1]
   head(mycounts)
   # 这一步很关键，要明白condition这里是因子，不是样本名称；小鼠数据有对照组和处理组，各两个重复
-  condition <- factor(c(rep("control",4),rep("treat",4)), levels = c("control","treat"))
+  tn <- nrow(grpTyp[which(grpTyp$z == grpTab[which(grpTab$grp_no==gp),2]),])
+  cn <- nrow(grpTyp[which(grpTyp$z == grpTab[which(grpTab$grp_no==gp),3]),])
+  condition <- factor(c(rep("control", cn),rep("treat", tn)), levels = c("control","treat"))
   condition
   #colData也可以自己在excel做好另存为.csv格式，再导入即可
-  colData <- data.frame(row.names=colnames(mycounts), condition)
+  colData <- data.frame(row.names = colnames(mycounts), condition)
   colData
-  
   
   #2 构建dds对象,开始DESeq流程    注释：dds=DESeqDataSet Object
   dds <- DESeqDataSetFromMatrix(mycounts, colData, design= ~ condition)
   dds <- DESeq(dds)
   dds
-  
   
   #3 总体结果查看
   #res <- results(dds, contrast=c("condition", "control", "treat"))或下面命令
@@ -99,53 +108,49 @@ for(gp in grpTab$grp_no){
   table(res$padj<0.05)
   
   #4 提取差异表达genes（DEGs）并进行gene symbol注释
-  ## 获取padj（p值经过多重校验校正后的值）小于0.05，表达倍数取以2为对数后大于1或者小于-1的差异表达基因。
-  diff_gene_deseq2 <-subset(res, padj < 0.05 & abs(log2FoldChange) > 0)
-  #或  diff_gene_deseq2 <-subset(res,padj < 0.05 & (log2FoldChange > 1 | log2FoldChange < -1))
-  dim(diff_gene_deseq2)
-  head(diff_gene_deseq2)
-  
-  
+  ## 获取padj（p值经过多重校验校正后的值）小于0.05，表达倍数取以2为对数后大于0或者小于-0的差异表达基因。
   #5 用bioMart对差异表达基因进行注释
   mart <- useDataset("mmusculus_gene_ensembl", useMart("ensembl"))
   mms_symbols <- getBM(attributes=c('ensembl_gene_id','external_gene_name',"description"),
                        filters = 'ensembl_gene_id', values = row.names(mycounts), mart = mart)
-  
-  
-  #5.2 合并数据:res结果+mms_symbols合并成一个文件
-  head(diff_gene_deseq2)
   head(mms_symbols)
-  
-  ensembl_gene_id <- row.names(mycounts)
-  mycounts <- cbind(ensembl_gene_id, mycounts)
-  diff_name <- left_join(mycounts, mms_symbols, by="ensembl_gene_id")
+
+  mycounts <- cbind(ensembl_gene_id=row.names(mycounts), mycounts)
+  res <- as.data.frame(res)
+  res$ensembl_gene_id <- row.names(res)
+  diff_name <- left_join(left_join(mycounts, res, by="ensembl_gene_id"), mms_symbols, by="ensembl_gene_id")
   
   diff_name$sig<-"no"
-  #然后设定一个取值范围，这里和我们画的线一致，Log2FC>2或<-2，且padj<0.05的我们认为是上调或者下调
   diff_name$sig[(diff_name$log2FoldChange > 0)&(diff_name$padj < 0.05)] <- "up"
   diff_name$sig[(diff_name$log2FoldChange < 0)&(diff_name$padj < 0.05)] <- "down"
   
-  
   #画图  到此为止就完成了RNA-seq的数据处理流程，下一步就是用pheatmap绘制热图了
-  
   diff <- as.data.frame(diff_name[,c('ensembl_gene_id','log2FoldChange','padj','sig')])
-  diff <- subset(diff, diff$ensembl_gene_id %in% row.names(diff_gene_deseq2))
+  diff <- subset(diff, diff$sig %in% c('up', 'down'))
   
   #思路还是一样的，我们先定义一个向量，里面是我们要显示的基因
-  p <- ggplot(diff)+geom_vline(xintercept = 0,linetype="dashed",color="grey")+geom_hline(yintercept = -log10(0.05),linetype="dashed",color="grey")+geom_point(aes(log2FoldChange,-log10(padj),color=sig))+scale_color_manual(values=c("green", "red"))
-  p <- p + xlim(-max(abs(diff$log2FoldChange)), max(abs(diff$log2FoldChange)))
-  #outcnt_plot <- p+geom_text_repel(aes(log2FoldChange,-log10(padj),label=name))
-  p <- p + ggtitle(gp_nm)
-  if(!'image' %in% list.files()) system('mkdir image')
-  ggsave(paste0('image/', gp_nm , '_DEseq.png'), plot = p, width = 8, height = 8)
-  
-
-  diffcount_xls <- right_join(as.data.frame(cbind("ensembl_gene_id" = row.names(mycounts), mycounts)), as.data.frame(diff_name[diff_name$ensembl_gene_id %in% row.names(diff_gene_deseq2)]), by = 'ensembl_gene_id')
-  #head(diffcount_xls)
-  if(!'diffGenes' %in% list.files()) system('mkdir diffGenes')
-  write.xlsx(diffcount_xls,paste0(path, '/diffGenes/', gp_nm, '_diffGenes.xlsx'))
-  
-  counts_xls <- right_join(as.data.frame(cbind("ensembl_gene_id" = row.names(mycounts), mycounts)), as.data.frame(diff_name), by = 'ensembl_gene_id')
-  write.xlsx(counts_xls,paste0(path, '/diffGenes/Cnt/', gp_nm, '_counts.xlsx'))
-
+  if(unique(diff$sig)=="up"){
+    color <- "red"
+  }else if(unique(diff$sig)=="down"){
+      color <- "green"
+  } else{
+    color <- c("green", "red")
   }
+  p <- ggplot(diff)+geom_vline(xintercept = 0,linetype="dashed",color="grey") + geom_hline(yintercept = -log10(0.05),linetype="dashed",color="grey")
+  p <- p + geom_point(aes(log2FoldChange,-log10(padj),color=sig))+scale_color_manual(values=color)
+  p <- p + xlim(-max(abs(diff$log2FoldChange)), max(abs(diff$log2FoldChange))) + theme_light()
+  p <- p + ggtitle(gp_nm) + theme(panel.grid.major =element_blank(), panel.grid.minor = element_blank(),plot.title = element_text(hjust = 0.5))
+  ggsave(paste0(outplot_dir, '/', gp_nm , '_DEseq.png'), plot = p, width = 8, height = 8)
+  
+  #差异基因列表
+  write.xlsx(subset(diff_name, diff_name$sig %in% c('up', 'down')),paste0(diffcounts_dir, '/', gp_nm, '_diffGenes.xlsx'))
+  #write.xlsx(subset(diff_name, diff_name$sig=='up'),paste0(diffcounts_dir, '/', gp_nm, '_diffGenesUp.xlsx'))
+  #write.xlsx(subset(diff_name, diff_name$sig=='down'),paste0(diffcounts_dir, '/', gp_nm, '_diffGenesDown.xlsx'))
+  #read counts列表
+  write.xlsx(diff_name, paste0(outcounts_dir, '/', gp_nm, '_Genes.xlsx'))
+}
+
+library(pbmcapply)
+mc <- getOption("mc.cores", detectCores(logical = F)-2)
+res <- pbmclapply(grpTab$grp_no, volcanoPlot, mc.preschedule = FALSE, mc.cleanup = FALSE, mc.cores = mc)
+

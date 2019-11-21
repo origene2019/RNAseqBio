@@ -1,9 +1,10 @@
+if(!require(reshape2)) install.packages("reshape2")
+if(!require(ggplot2)) install.packages("ggplot2")
 library(reshape2)
 library(ggplot2)
 
 corr_plot <- function(cor, title_nm){
   melted_cor <- melt(round(cor,3))
-  
   p <- ggplot(data = melted_cor, aes(x=Var1, y=Var2, fill=value)) + geom_tile(color = "white")
   p <- p + scale_fill_gradient2(low = "white", high = "blue",  midpoint = floor(min(melted_cor$value)*10)/10, limit = c(floor(min(melted_cor$value)*10)/10,1), space = "Lab", name="Pearson\nCorrelation")
   p <- p + theme(axis.text.x = element_text(angle = 45, vjust = 1, size = 12, hjust = 1))
@@ -39,4 +40,4 @@ res <- mclapply(grpTab$grp_no, sampl_corr, mc.preschedule = FALSE, mc.cleanup = 
 #  nm <- paste0('/home/data/Rseq/P101SC1717020113/DEG/image/sample_corr/countData/', Tab[1,2], '_vs_', Tab[1,3], '_counts.xlsx')
 #  counts_dat <- grpMerge_lst[[n]]
 #  write.xlsx(counts_dat, nm)
-}
+
