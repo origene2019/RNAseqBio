@@ -141,7 +141,7 @@ volcanoPlot <- function(gp){
   p <- p + xlim(-max(abs(diff$log2FoldChange)), max(abs(diff$log2FoldChange))) + theme_light()
   p <- p + ggtitle(gp_nm) + theme(panel.grid.major =element_blank(), panel.grid.minor = element_blank(),plot.title = element_text(hjust = 0.5))
   ggsave(paste0(outplot_dir, '/', gp_nm , '_DEseq.png'), plot = p, width = 8, height = 8)
-  
+  ggsave(paste0(outplot_dir, '/', gp_nm , '_DEseq.pdf'), plot = p, width = 8, height = 8)
   #差异基因列表
   write.xlsx(subset(diff_name, diff_name$sig %in% c('up', 'down')),paste0(diffcounts_dir, '/', gp_nm, '_diffGenes.xlsx'))
   #write.xlsx(subset(diff_name, diff_name$sig=='up'),paste0(diffcounts_dir, '/', gp_nm, '_diffGenesUp.xlsx'))
