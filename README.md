@@ -31,78 +31,78 @@ Linux命令：whereis查找生信软件执行路径，for example: whereis samto
 
 ## File Tree
 
-resultsAll
-├── alterSplic
-│   ├── AS_OVA_vs_Control
-│   │   ├── A5SS.MATS.JCEC.txt
-│   │   ├── RI.MATS.JCEC.txt
-│   │   ├── SE.MATS.JCEC.txt
-│   │   ├── sign20.SE.MATS.JCEC.txt
-│   │   └── sign.SE.MATS.JCEC.txt
-│   └── ASplot
-│       └── AS_OVA_vs_Control
-│           ├── Sashimi_index
-│           │   └── SE.event.list.txt
-│           │       ├── 11_Snhg1_19_8725014_8725046_+@19_8725014_8725256_+@19_8725222_8725256_+.pdf
-│           │       └── 11_Snhg1_19_8725014_8725046_+@19_8725014_8725256_+@19_8725222_8725256_+.png
-│           └── SE
-│               └── Sashimi_plot
-│                   ├── 9_Ubox5_2_130629916_130630027_-@2_130614889_130616742_-@2_130604485_130604626_-.pdf
-│                   └── 9_Ubox5_2_130629916_130630027_-@2_130614889_130616742_-@2_130604485_130604626_-.png
-├── corrPlot
-│   ├── O_NS398_vs_O_DIC_corr.png
-│   ├── O_NS398_vs_OVA_corr.png
-│   └── OVA_vs_Control_corr.png
-├── counts
-│   ├── OVA2Reye_counts.txt
-│   ├── OVA3Leye_counts.txt
-│   └── OVA3Reye_counts.txt
-├── Differential
-│   │   └── OVA_vs_Control_up
-│   │       ├── GO
-│   │       ├── GSEA
-│   │       ├── KEGG
-│   │       └── Reactome
-│   └── volcano
-│       ├── O_NS398_vs_OVA_DEseq.png
-│       └── OVA_vs_Control_DEseq.png
-├── fpkm
-│   ├── cluster
-│   │   ├── OVA_vs_Control_heatmap.pdf
-│   │   └── OVA_vs_Control_heatmap.png
-│   └── violinPlot
-│       ├── O_NS398_vs_OVA_FPKM.png
-│       └── OVA_vs_Control_FPKM.png
-├── grpTab.txt
-├── grpTyp.txt
-├── grpVenn.txt
-├── map
-│   ├── align_region.xlsx
-│   ├── OVA3Reye_mapRegion.pdf
-│   └── OVA3Reye_mapRegion.png
-├── pca
-│   ├── OVA_vs_Control_pca.pdf
-│   └── OVA_vs_Control_pca.png
-├── PPI
-│   └── OVA_vs_Control
-│       ├── OVA_vs_Control_all.tsv
-│       ├── OVA_vs_Control_diffGenes.xlsx
-│       └── OVA_vs_Control_up.tsv
-├── SNP
-│   └── snpPlot
-├── sortBam
-├── tree.txt
-└── venn
-    ├── Venn1
-    │   ├── 7_O_10526_vs_OVA~O_NS398_vs_OVA.xlsx
-    │   └── 8_O_DIC_vs_OVA.xlsx
-    ├── Venn1.pdf
-    ├── Venn1.png
-    ├── Venn2
-    │   ├── 1_C_10526_vs_Control.xlsx
-    │   └── 5_C_DIC_vs_Control.xlsx
-    ├── Venn2.pdf
-    └── Venn2.png
+resultsAll  
+├── alterSplic  
+│   ├── AS_OVA_vs_Control  
+│   │   ├── A5SS.MATS.JCEC.txt  
+│   │   ├── RI.MATS.JCEC.txt  
+│   │   ├── SE.MATS.JCEC.txt  
+│   │   ├── sign20.SE.MATS.JCEC.txt  
+│   │   └── sign.SE.MATS.JCEC.txt  
+│   └── ASplot  
+│       └── AS_OVA_vs_Control  
+│           ├── Sashimi_index  
+│           │   └── SE.event.list.txt  
+│           │       ├── 11_Snhg1_19_8725014_8725046_+@19_8725014_8725256_+@19_8725222_8725256_+.pdf  
+│           │       └── 11_Snhg1_19_8725014_8725046_+@19_8725014_8725256_+@19_8725222_8725256_+.png  
+│           └── SE  
+│               └── Sashimi_plot  
+│                   ├── 9_Ubox5_2_130629916_130630027_-@2_130614889_130616742_-@2_130604485_130604626_-.pdf  
+│                   └── 9_Ubox5_2_130629916_130630027_-@2_130614889_130616742_-@2_130604485_130604626_-.png  
+├── corrPlot  
+│   ├── O_NS398_vs_O_DIC_corr.png  
+│   ├── O_NS398_vs_OVA_corr.png  
+│   └── OVA_vs_Control_corr.png  
+├── counts  
+│   ├── OVA2Reye_counts.txt  
+│   ├── OVA3Leye_counts.txt   
+│   └── OVA3Reye_counts.txt  
+├── Differential  
+│   │   └── OVA_vs_Control_up  
+│   │       ├── GO  
+│   │       ├── GSEA  
+│   │       ├── KEGG  
+│   │       └── Reactome  
+│   └── volcano  
+│       ├── O_NS398_vs_OVA_DEseq.png  
+│       └── OVA_vs_Control_DEseq.png  
+├── fpkm  
+│   ├── cluster  
+│   │   ├── OVA_vs_Control_heatmap.pdf  
+│   │   └── OVA_vs_Control_heatmap.png  
+│   └── violinPlot  
+│       ├── O_NS398_vs_OVA_FPKM.png  
+│       └── OVA_vs_Control_FPKM.png  
+├── grpTab.txt  
+├── grpTyp.txt  
+├── grpVenn.txt  
+├── map  
+│   ├── align_region.xlsx  
+│   ├── OVA3Reye_mapRegion.pdf  
+│   └── OVA3Reye_mapRegion.png  
+├── pca  
+│   ├── OVA_vs_Control_pca.pdf  
+│   └── OVA_vs_Control_pca.png  
+├── PPI  
+│   └── OVA_vs_Control  
+│       ├── OVA_vs_Control_all.tsv  
+│       ├── OVA_vs_Control_diffGenes.xlsx  
+│       └── OVA_vs_Control_up.tsv  
+├── SNP  
+│   └── snpPlot  
+├── sortBam  
+├── tree.txt  
+└── venn  
+    ├── Venn1  
+    │   ├── 7_O_10526_vs_OVA~O_NS398_vs_OVA.xlsx  
+    │   └── 8_O_DIC_vs_OVA.xlsx  
+    ├── Venn1.pdf  
+    ├── Venn1.png  
+    ├── Venn2  
+    │   ├── 1_C_10526_vs_Control.xlsx  
+    │   └── 5_C_DIC_vs_Control.xlsx  
+    ├── Venn2.pdf  
+    └── Venn2.png  
 
 
 #### 需要使用的生信软件，使用conda进行安装及管理 conda install，conda update, conda uninstall  
