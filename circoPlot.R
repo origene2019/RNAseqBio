@@ -1,4 +1,4 @@
-path <- '/home/data/Rseq/results361111/9.Fusiongene'
+path <- '/home/data/Rseq/wangyangxian/raw/Fusion'
 file <- dir(path, pattern = 'tsv$')
 #install.packages("RCircos")
 library(RCircos)
@@ -7,6 +7,7 @@ library(stringr)
 library(ggplot2)
 library(dplyr)
 options(stringsAsFactors = FALSE)
+if(!'Circos' %in% dir(path)) system(paste0('mkdir ',path, '/Circos'), intern = TRUE)
 for (t in file) {
   dat <- read.delim2(paste0(path,'/',t))
   if(nrow(dat)>0){
@@ -38,7 +39,10 @@ for (t in file) {
   ucsc <- UCSC.Mouse.GRCm38.CytoBandIdeogram
   if(sum(Label.Data$Chromosome=='chrM')>0) {
     subcyto <- Label.Data[which(Label.Data$Chromosome=='chrM'),c(1:3)]
-    cyto <- cbind(subcyto, "Band"=paste0('qA',1:nrow(subcyto)),"Stain"=sample(c("gpos100","gpos33","gneg","gpos66"),nrow(subcyto),replace = TRUE))
+    subcyto <- arrange(subcyto, chromStart)
+    if(nrow(subcyto)>=2) subcyto[2:nrow(subcyto),2] <- subcyto[1:(nrow(subcyto)-1),3]
+    subcyto <- subset(subcyto, !subcyto$chromStart==subcyto$chromEnd)
+    cyto <- cbind(subcyto, "Band"=paste0('qA',1:nrow(subcyto)),"Stain"=c('gpos100',sample(c("gpos100","gpos33","gneg","gpos66"),nrow(subcyto)-1,replace = TRUE)))
     cyto$chromStart[1] <- 0
     colnames(cyto) <- colnames(UCSC.Mouse.GRCm38.CytoBandIdeogram)
     ucsc <- rbind(UCSC.Mouse.GRCm38.CytoBandIdeogram,cyto)
@@ -66,6 +70,9 @@ for (t in file) {
   }
   print(t)
   png(paste0(path,'/Circos/',sco_nm,'_circos.png'), width = 800, height = 800)
+  print(b())
+  dev.off()
+  png(paste0(path,'/Circos/',sco_nm,'_circos.pdf'), width = 800, height = 800, title=sco_nm)
   print(b())
   dev.off()
   }

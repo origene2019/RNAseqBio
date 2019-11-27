@@ -41,8 +41,9 @@ Enrich <- function(i, cutn=NULL){
     diff1 <- subset(diff1, diff1$sig==cutn)  
     cutnm <- paste0('_', cutn)  #  c(NULL,"_up","_down")
   }else{cutnm <- cutn}
-  if(!paste0(nm,  cutnm) %in% list.files(paste0(diffgn_dir, '/enrich'))) system(paste0('mkdir ', diffgn_dir, '/enrich/', nm, cutnm))
-  setwd(paste0(diffgn_dir, '/enrich/', nm, cutnm))
+  if(!'GO' %in% list.files(paste0(diffgn_dir, '/enrich'))) system(paste0('mkdir ', diffgn_dir, '/enrich/GO'))
+  if(!paste0(nm,  cutnm) %in% list.files(paste0(diffgn_dir, '/enrich/GO'))) system(paste0('mkdir ', diffgn_dir, '/enrich/GO/', nm, cutnm))
+  setwd(paste0(diffgn_dir, '/enrich/GO/', nm, cutnm))
   if(!is.null(diff1) & nrow(diff1)>0){
   eg <- bitr(diff1$ensembl_gene_id, fromType="ENSEMBL", toType="ENTREZID", OrgDb="org.Mm.eg.db")  # id转换成ENTREZID
   # 02 GO富集分析
@@ -147,6 +148,9 @@ Enrich <- function(i, cutn=NULL){
   }
   
   # 03 KEGG通路富集
+  if(!'KEGG' %in% list.files(paste0(diffgn_dir, '/enrich'))) system(paste0('mkdir ', diffgn_dir, '/enrich/KEGG'))
+  if(!paste0(nm,  cutnm) %in% list.files(paste0(diffgn_dir, '/enrich/KEGG'))) system(paste0('mkdir ', diffgn_dir, '/enrich/KEGG/', nm, cutnm))
+  setwd(paste0(diffgn_dir, '/enrich/KEGG/', nm, cutnm))
   kegg <- enrichKEGG(genelist, organism = 'mmu', keyType = 'kegg', pAdjustMethod = 'BH')
   if(!is.null(kegg)){
     if(!class(kegg)=="try-error" & nrow(kegg@result)>0){
@@ -192,6 +196,9 @@ Enrich <- function(i, cutn=NULL){
   head(id_geneList)
   
   # DO富集分析 disease ontology
+  if(!'DO' %in% list.files(paste0(diffgn_dir, '/enrich'))) system(paste0('mkdir ', diffgn_dir, '/enrich/DO'))
+  if(!paste0(nm,  cutnm) %in% list.files(paste0(diffgn_dir, '/enrich/DO'))) system(paste0('mkdir ', diffgn_dir, '/enrich/DO/', nm, cutnm))
+  setwd(paste0(diffgn_dir, '/enrich/DO/', nm, cutnm))
   do <- try(enrichDO(geneList$ENTREZID, ont = "DO", pAdjustMethod = "BH",
                      # pvalueCutoff = 0.05, qvalueCutoff = 0.1, 
                      readable = FALSE), silent = TRUE)
@@ -227,6 +234,9 @@ Enrich <- function(i, cutn=NULL){
   
   # 04 Reactome pathway enrichment analysis
   #Pathway enrichment analysis
+  if(!'Reactome' %in% list.files(paste0(diffgn_dir, '/enrich'))) system(paste0('mkdir ', diffgn_dir, '/enrich/Reactome'))
+  if(!paste0(nm,  cutnm) %in% list.files(paste0(diffgn_dir, '/enrich/Reactome'))) system(paste0('mkdir ', diffgn_dir, '/enrich/Reactome/', nm, cutnm))
+  setwd(paste0(diffgn_dir, '/enrich/Reactome/', nm, cutnm))
   library(ReactomePA)
   reactome <- try(ReactomePA::enrichPathway(geneList$ENTREZID, readable=T,organism = "mouse"), silent = TRUE)
   if(!is.null(reactome)){
@@ -261,7 +271,7 @@ Enrich <- function(i, cutn=NULL){
   
   # 04 GSEA富集分析
   #GSEA富集分析
-  
+
   diffgn_dir2 <- '/home/data/Rseq/P101SC1717020113/DEG/diffGenes/Cnt'
   fl_nm2 <- dir(diffgn_dir2, pattern = '_counts.xlsx')
   nm <- str_replace(fl_nm2[i], '_counts.xlsx', '')
@@ -278,6 +288,9 @@ Enrich <- function(i, cutn=NULL){
   
   
   #GSEA的GO富集。
+  if(!'GSEA-GO' %in% list.files(paste0(diffgn_dir, '/enrich'))) system(paste0('mkdir ', diffgn_dir, '/enrich/GSEA-GO'))
+  if(!paste0(nm,  cutnm) %in% list.files(paste0(diffgn_dir, '/enrich/GSEA-GO'))) system(paste0('mkdir ', diffgn_dir, '/enrich/GSEA-GO/', nm, cutnm))
+  setwd(paste0(diffgn_dir, '/enrich/GSEA-GO/', nm, cutnm))
   gsea.goBP <- try(gseGO(id_geneList2, OrgDb = org.Mm.eg.db, keyType = "ENTREZID", ont="BP"), silent=T)
   if(!is.null(gsea.goBP)){
     if(!"try-error" %in% class(gsea.goBP) & nrow(gsea.goBP@result)>0){
@@ -312,6 +325,9 @@ Enrich <- function(i, cutn=NULL){
   
   
   #GSEA的KEGG富集，KEGG富集到的某一条通路的可视化：  # Loading required package: org.Hs.eg.db
+  if(!'GSEA-KEGG' %in% list.files(paste0(diffgn_dir, '/enrich'))) system(paste0('mkdir ', diffgn_dir, '/enrich/GSEA-KEGG'))
+  if(!paste0(nm,  cutnm) %in% list.files(paste0(diffgn_dir, '/enrich/GSEA-KEGG'))) system(paste0('mkdir ', diffgn_dir, '/enrich/GSEA-KEGG/', nm, cutnm))
+  setwd(paste0(diffgn_dir, '/enrich/GSEA-KEGG/', nm, cutnm))
   kk <- try(gseKEGG(id_geneList2, organism = 'mmu'),silent = TRUE)
   if(!is.null(kk)){
     if(!"try-error" %in% class(kk) & nrow(kk@result)>0){
