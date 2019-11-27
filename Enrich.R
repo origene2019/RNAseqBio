@@ -67,9 +67,10 @@ Enrich <- function(i, cutn=NULL){
     subset(row_number<=20) %>%
     arrange(ONTOLOGY,-Count)
   
+  colors <- c(BP="#8DA1CB", CC="#FD8D62", MF="#66C3A5")
   GO_term_order <- factor(as.integer(rownames(go_top10)), labels = go_top10$Description)
   p <- ggplot(data=go_top10, aes(x=GO_term_order, y=Count, fill=ONTOLOGY))
-  p <- p + geom_bar(stat='identity', width = 0.8) + theme_bw() + scale_fill_manual(values = c("#8DA1CB", "#FD8D62", "#66C3A5"))
+  p <- p + geom_bar(stat='identity', width = 0.8) + theme_bw() + scale_fill_manual(values = colors[unique(go_top10$ONTOLOGY)])
   p <- p + xlab('GO term') + ylab('Num of Genes') + labs(title = paste0('The Most Enriched GO Terms\n', nm))
   p <- p + theme(axis.text.x = element_text(face = 'bold', color = 'gray50', angle = 70, vjust = 1, hjust = 1))
   goplt1 <- p + theme(panel.grid.major =element_blank(), panel.grid.minor = element_blank(),plot.title = element_text(hjust = 0.5))
