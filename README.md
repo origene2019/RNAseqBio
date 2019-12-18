@@ -124,8 +124,10 @@ whereis 查找软件路径
 ## 比对区域统计汇总 mapRegStat.R
 
 
-# 数据质控（待完善）
-
+# 数据质控  
+mapQC.R   
+mapStat.R  
+mapRegStat.R  
 
 # 1、定量分析
 ## 1.1、exprLevel.R
@@ -190,6 +192,7 @@ rMATS 4.0.2
 ##### --od  outDir  输出路径
  
 ## 5.3 可变剪切可视化
+### ESplot.R
 ####	rmats2sashimiplot（pyhton2环境）需要调用samtools,使用时特别需要注意把python2环境下的samtools升级到最新版本，否则在调用samtools时会调用失败，  
 ####	原因是自动安装的版本太低，服务器没有它需要的libxxx.so.0.0.0库。  
 ####	升级python2中samtools的方法：  
@@ -216,9 +219,13 @@ snpEff
 ### 变异位点统计图（待完善）
 
 ## 6.2、SNPann.R
-#### 变异基因注释
+### SNP-loop.R  
+### 变异基因注释 SNPann.R  
+### SNP结果汇总，画统计图 SNPstatPlot.R  
 
-## SNP结果汇总 SNPstatPlot.R
 
 
 
+# 7、融合基因  
+### fusion.R  
+### 融合基因圈图 circoPlot.R  
