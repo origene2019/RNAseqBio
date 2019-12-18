@@ -216,12 +216,9 @@ snpEff
 ##### (6.4) 检测snp和indel
 ##### (6.5)snp和indel过滤
 
-### 变异位点统计图（待完善）
-
 ## 6.2、SNPann.R
-### SNP-loop.R  
-### 变异基因注释 SNPann.R  
-### SNP结果汇总，画统计图 SNPstatPlot.R  
+ 
+## 6.3、SNP结果汇总，画变异位点统计图 SNPstatPlot.R  
 
 
 
