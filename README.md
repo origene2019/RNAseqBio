@@ -171,8 +171,8 @@ heatmapCluster.R
 # 4、富集分析
 clusterProfiler 3.14.0
 ### 根据差异基因进行富集分析
-#### org.Hu.eg.db 老鼠基因库
-#### org.Mm.eg.db 人类基因库
+#### org.Hu.eg.db 人类基因库
+#### org.Mm.eg.db 老鼠基因库
 #### GO、KEGG、GASE、DO、Reactome
 
 
